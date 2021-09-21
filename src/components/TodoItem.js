@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment, react/prefer-stateless-function,
-react/prop-types */
+react/prop-types, react/button-has-type */
 import React from 'react';
 
 class TodoItem extends React.Component {
@@ -11,6 +11,9 @@ class TodoItem extends React.Component {
           checked={this.props.todo.completed}
           onChange={() => this.props.handleChangeProps(this.props.todo.id)}
         />
+        <button onClick={() => this.props.deleteTodoProps(this.props.todo.id)}>
+          Delete
+        </button>
         {this.props.todo.title}
       </li>
     );
@@ -19,4 +22,4 @@ class TodoItem extends React.Component {
 
 export default TodoItem;
 /* eslint-enable react/destructuring-assignment, react/prefer-stateless-function,
-react/prop-types */
+react/prop-types, react/button-has-type */
