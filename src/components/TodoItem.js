@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment, react/prefer-stateless-function,
-react/prop-types, react/button-has-type, react/state-in-constructor */
+react/prop-types, react/button-has-type, react/state-in-constructor, react/sort-comp */
 import React from 'react';
 import styles from './TodoItem.module.css';
 
@@ -18,6 +18,10 @@ class TodoItem extends React.Component {
     if (event.key === 'Enter') {
       this.setState({ editing: false });
     }
+  }
+
+  componentWillUnmount() {
+    console.log('Cleaning up...');
   }
 
   render() {
@@ -70,4 +74,4 @@ class TodoItem extends React.Component {
 
 export default TodoItem;
 /* eslint-enable react/destructuring-assignment, react/prefer-stateless-function,
-react/prop-types, react/button-has-type, react/state-in-constructor */
+react/prop-types, react/button-has-type, react/state-in-constructor, react/sort-comp */
