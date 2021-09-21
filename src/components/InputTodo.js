@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function, react/button-has-type,
-react/destructuring-assignment, react/state-in-constructor */
+react/destructuring-assignment, react/state-in-constructor, react/prop-types */
 import React, { Component } from 'react';
 
 class InputTodo extends Component {
@@ -13,9 +13,14 @@ class InputTodo extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodoProps(this.state.title);
+  };
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Add todo..."
@@ -30,4 +35,4 @@ class InputTodo extends Component {
 }
 export default InputTodo;
 /* eslint-enable react/prefer-stateless-function, react/button-has-type,
-react/destructuring-assignment, react/state-in-constructor */
+react/destructuring-assignment, react/state-in-constructor, react/prop-types */
