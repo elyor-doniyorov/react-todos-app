@@ -1,17 +1,20 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/destructuring-assignment, react/prefer-stateless-function,
+react/prop-types, react/jsx-key */
 import React from 'react';
+import TodoItem from './TodoItem';
 
 class TodosList extends React.Component {
   render() {
     return (
       <ul>
-        <li>first</li>
-        <li>second</li>
-        <li>third</li>
+        {this.props.todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
       </ul>
     );
   }
 }
 
 export default TodosList;
-/* eslint-enable react/prefer-stateless-function */
+/* eslint-enable react/destructuring-assignment, react/prefer-stateless-function,
+react/prop-types, react/jsx-key */
