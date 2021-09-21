@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function, react/state-in-constructor,
-react/destructuring-assignment */
+react/destructuring-assignment, react/no-access-state-in-setstate, no-param-reassign */
 import React from 'react';
 import TodosList from './TodosList';
 import Header from './Header';
@@ -29,7 +29,14 @@ class TodoContainer extends React.Component {
   }
 
   handleChange = (id) => {
-    console.log('clicked', id);
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      }),
+    });
   };
 
   render() {
@@ -44,4 +51,4 @@ class TodoContainer extends React.Component {
 
 export default TodoContainer;
 /* eslint-enable  react/prefer-stateless-function, react/state-in-constructor,
-react/destructuring-assignment */
+react/destructuring-assignment, react/no-access-state-in-setstate, no-param-reassign */
