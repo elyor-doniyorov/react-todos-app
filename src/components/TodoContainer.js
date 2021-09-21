@@ -3,6 +3,7 @@ react/destructuring-assignment, react/no-access-state-in-setstate, no-param-reas
 import React from 'react';
 import TodosList from './TodosList';
 import Header from './Header';
+import InputTodo from './InputTodo';
 
 class TodoContainer extends React.Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class TodoContainer extends React.Component {
     return (
       <div>
         <Header />
+        <InputTodo />
         <TodosList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
