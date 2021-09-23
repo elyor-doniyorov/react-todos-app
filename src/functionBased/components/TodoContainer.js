@@ -1,6 +1,6 @@
 /* eslint-disable react/prefer-stateless-function, react/state-in-constructor,
 react/destructuring-assignment, react/no-access-state-in-setstate, no-param-reassign,
-react/sort-comp */
+react/sort-comp, no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
@@ -8,7 +8,7 @@ import InputTodo from './InputTodo';
 import TodosList from './TodosList';
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(getInitialTodos());
 
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
@@ -48,17 +48,24 @@ const TodoContainer = () => {
     );
   };
 
-  useEffect(() => {
-    console.log('test run');
-
+  function getInitialTodos() {
     // getting stored items
     const temp = localStorage.getItem('todos');
-    const loadedTodos = JSON.parse(temp);
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
 
-    if (loadedTodos) {
-      setTodos(loadedTodos);
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log('test run');
+
+  //   // getting stored items
+  //   const temp = localStorage.getItem('todos');
+  //   const loadedTodos = JSON.parse(temp);
+
+  //   if (loadedTodos) {
+  //     setTodos(loadedTodos);
+  //   }
+  // }, []);
 
   useEffect(() => {
     // storing todos items
@@ -85,4 +92,4 @@ const TodoContainer = () => {
 export default TodoContainer;
 /* eslint-enable  react/prefer-stateless-function, react/state-in-constructor,
 react/destructuring-assignment, react/no-access-state-in-setstate, no-param-reassign,
-react/sort-comp */
+react/sort-comp, no-use-before-define */
